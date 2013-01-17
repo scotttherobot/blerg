@@ -34,9 +34,10 @@ shiternetexplorer
 </div>
 
 <div id="nav">
-<a href=""> blog</a> |
+<a href="/"> blog</a> |
 <a href=""> projects</a> |
-<a href=""> contact</a> 
+<a href="/about.html"> about</a> |
+<a href="/contact.html"> contact</a> 
 </div>
 
 <? if($auth) echo('<!-- '); ?>

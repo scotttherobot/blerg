@@ -70,3 +70,17 @@ b { font-weight: bold; }
 	font-size: 11;	
 	color: #FF6600;
 }
+.image{
+	opacity: .4;
+	-webkit-transition:all .5s ease-in-out;
+	-moz-transition:all .5s ease-in-out;
+ 	-o-transition:all .5s ease-in-out;
+  	transition:all .5s ease-in-out;
+}
+.image:hover{
+	opacity: 1;
+	-webkit-transition:all .5s ease-in-out;
+	-moz-transition:all .5s ease-in-out;
+ 	-o-transition:all .5s ease-in-out;
+  	transition:all .5s ease-in-out;
+}

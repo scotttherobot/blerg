@@ -31,9 +31,10 @@ shiternetexplorer
 </div>
 
 <div id="nav">
-<a href=""> blog</a> |
+<a href="/"> blog</a> |
 <a href=""> projects</a> |
-<a href=""> contact</a> 
+<a href="/about.html"> about</a> |
+<a href="/contact.html"> contact</a> 
 <?
 if($auth){
 	echo(' | <a href="../res/new.html">new post</a>');
@@ -60,6 +61,7 @@ if(!$p_id){
 		echo('<div class="title"><a href="index.php?id='.$record['p_id'].'">' . $record['p_title'] . '</a></div>');
 		echo('<div class="byline">' . $record['p_author'] . ' at ' . $record['p_timestamp'] . '</div>');
 		echo($record['p_preview']);
+		echo('<div class="byline"><a href="index.php?id='.$record['p_id'].'">Continue Reading...</a></div>');
 		echo('</div>');
 	}
 }
@@ -86,7 +88,12 @@ if($page > 0){
 	echo('<a href="?page='. ($page - 1) .'"> <- </a> ');
 }
 for($i = 0; $i < $pg; $i++){
-	echo('<a href="?page='.$i.'">'. ($i+1) .'</a> ');
+	if($i == $page){
+		echo('<big><a href="?page='.$i.'">['. ($i+1) .']</a></big> ');
+	} else {
+		echo('<a href="?page='.$i.'">'. ($i+1) .'</a> ');
+
+	}
 }
 if($page < ($pg - 1)){
 	echo('<a href="?page='. ($page + 1) .'"> -> </a> ');

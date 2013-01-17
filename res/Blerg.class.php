@@ -17,7 +17,7 @@ class Blerg{
 		p_title VARCHAR(140),
 		p_timestamp TIMESTAMP,
 		p_author VARCHAR(140),
-		p_preview VARCHAR(500),
+		p_preview VARCHAR(1000),
 		p_body VARCHAR(10000)
 		)";
 		$db->query($sql);
