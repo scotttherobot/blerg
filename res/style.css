@@ -1,0 +1,72 @@
+@font-face {  
+	font-family: "Caecilia";
+	src: local("CaeciliaLTStd-Roman.ttf"), url("../res/CaeciliaLTStd-Roman.ttf") format("truetype");  
+}
+body {
+	background-color: #DDD;
+	border-top: 0px solid black;
+	font-family: Caecilia;
+	text-align: center;
+	
+}
+a { 
+	color: #CD661D;
+	text-decoration: none;
+}
+
+a:hover { 
+	color: #FF6600;
+	text-shadow: 1px 1px 1px white;
+}
+
+b { font-weight: bold; }
+
+#header {
+	top: 20px;
+	margin-left: 200px;
+	width: 50%;
+	height: 150px;
+	border-bottom: 0px solid #FF6600;
+	font-size: 50;	
+	color: #FF6600;
+	cursor: pointer;
+	text-shadow: 1px 1px 1px white;
+}
+#nav {
+	text-align: right;
+	margin-left: 200px;
+	margin-top: 5px;
+	width: 50%;
+	border-bottom: 5px solid #FF6600;
+	color: #FF6600;
+}
+.post {
+	text-align: left;
+	margin-left: 200px;
+	margin-top: 20px;
+	border: 0px solid #FF6600;
+	border-left: 5px solid #FF6600;
+	width: 50%;
+	padding-left: 5px;
+}
+.title {
+	text-align: left;
+	font-size: 30;
+	border: 0px solid #FF6600;
+}
+.byline {
+	text-align: left;
+	font-size: 12;
+	border: 0px solid #FF6600;
+	margin-bottom: 10px;
+}
+#footer{
+	text-align: right;
+	margin-top: 20px;
+	margin-left: 200px;
+	width: 50%;
+	height: 30px;
+	border-top: 2px solid #FF6600;
+	font-size: 11;	
+	color: #FF6600;
+}

@@ -1,0 +1,42 @@
+<html>
+<head>
+<style type="text/css" media="screen">
+		@import url(/res/style.css);	
+</style>
+<title>
+shiterblog
+</title>
+</head>
+<body>
+
+<div id="header" onclick="location.href='/';">
+<br>
+<!-- this is where the site title goes -->
+shiternetexplorer
+</div>
+
+<div id="nav">
+<a href=""> blog</a> |
+<a href=""> projects</a> |
+<a href=""> contact</a> 
+</div>
+
+<!-- Create a new post :) -->
+<div class="post">
+<form name="newpost" action="post.php" method="get">
+<input type="hidden" name="m" value="c">
+Title: <input type="text" name="t"><br>
+Author: <input type="text" name="a"><br>
+Preview: <textarea name="p"></textarea><br>
+Body: <textarea name="b"></textarea><br>
+<input type="submit" value="Post">
+</form>
+</div>
+
+<div id="footer">
+site by scott vanderlind 2013
+</div>
+
+
+</body>
+</html>
