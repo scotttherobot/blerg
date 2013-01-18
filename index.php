@@ -2,7 +2,10 @@
 require_once("res/Blerg.class.php");
 $blerg = new Blerg();
 $p_id = $_GET['id'];
-$page = $_GET['page'];
+if(isset($_GET['page'])){
+	$page = $_GET['page'];
+}
+$page = 0;
 $p_perpage = 5;
 
 ///////
@@ -19,7 +22,7 @@ $auth = $_GET['auth'];
 		@import url(/res/style.css);	
 </style>
 <title>
-shiterblog
+<? echo($blerg->returnName()) ?>
 </title>
 </head>
 <body>
@@ -27,17 +30,28 @@ shiterblog
 <div id="header" onclick="location.href='/';">
 <br>
 <!-- this is where the site title goes -->
-shiternetexplorer
+<? echo($blerg->returnName()) ?>
 </div>
 
 <div id="nav">
+<a href="/"> blog</a> 
+<?
+$pages = $blerg->returnPages();
+foreach($pages as $record){
+	echo('| <a href="index.php?id=' . $record['p_id'] . '"> ' . $record['p_title'] . '</a> ');
+}
+?>
+
+<!--
 <a href="/"> blog</a> |
-<a href=""> projects</a> |
-<a href="/about.html"> about</a> |
-<a href="/contact.html"> contact</a> 
+<a href="/projects.php"> projects</a> |
+<a href="/about.php"> about</a> |
+<a href="/contact.php"> contact</a> 
+--> 
 <?
 if($auth){
-	echo(' | <a href="../res/new.html">new post</a>');
+	echo(' | <a href="../res/new.php">new post</a> |');
+	echo(' <a href="../res/new.php?t=1">new page</a>');
 }
 ?>
 
@@ -60,7 +74,7 @@ if(!$p_id){
 		echo('<div class="post">');
 		echo('<div class="title"><a href="index.php?id='.$record['p_id'].'">' . $record['p_title'] . '</a></div>');
 		echo('<div class="byline">' . $record['p_author'] . ' at ' . $record['p_timestamp'] . '</div>');
-		echo($record['p_preview']);
+		echo(substr($record['p_body'], 0, 1000));
 		echo('<div class="byline"><a href="index.php?id='.$record['p_id'].'">Continue Reading...</a></div>');
 		echo('</div>');
 	}
@@ -71,8 +85,6 @@ else{
 	echo('<div class="post">');
 	echo('<div class="title"><a href="index.php?id='.$record['p_id'].'">' . $record['p_title'] . '</a></div>');
 	echo('<div class="byline">' . $record['p_author'] . ' at ' . $record['p_timestamp'] . '</div>');
-	echo($record['p_preview']);
-	echo('<br><br>');
 	echo($record['p_body']);
 	if($auth){
 		echo('<br><br><a href="../res/post.php?m=d&id=' . $record['p_id'] . '">Delete post</a>');
@@ -81,9 +93,14 @@ else{
 }
 ?>
 <!-- Printing the page numbers -->
-<? if($p_id) echo("<!-- "); ?>
-<div class="post"><?
+<?
 $pg = $blerg->pageCount($p_perpage);
+if($p_id || $pg == 1) echo("<!-- "); 
+
+?>
+<div class="post">
+<?
+
 if($page > 0){
 	echo('<a href="?page='. ($page - 1) .'"> <- </a> ');
 }
@@ -99,7 +116,7 @@ if($page < ($pg - 1)){
 	echo('<a href="?page='. ($page + 1) .'"> -> </a> ');
 }
 ?></div>
-<? if($p_id) echo(" -->"); ?>
+<? if($p_id || $pg == 1) echo(" -->"); ?>
 
 <div id="footer">
 <a href="../res/login.php">login</a> | site by scott vanderlind 2013

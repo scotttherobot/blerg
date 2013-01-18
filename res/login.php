@@ -22,7 +22,8 @@ echo('<meta http-equiv="REFRESH" content="0;url=../?auth=1">');
 		@import url(/res/style.css);	
 </style>
 <title>
-shiterblog
+<? echo($blerg->returnName()) ?>
+
 </title>
 </head>
 <body>
@@ -30,14 +31,17 @@ shiterblog
 <div id="header" onclick="location.href='/';">
 <br>
 <!-- this is where the site title goes -->
-shiternetexplorer
+<? echo($blerg->returnName()) ?>
 </div>
 
 <div id="nav">
-<a href="/"> blog</a> |
-<a href=""> projects</a> |
-<a href="/about.html"> about</a> |
-<a href="/contact.html"> contact</a> 
+<a href="/"> blog</a> 
+<?
+$pages = $blerg->returnPages();
+foreach($pages as $record){
+	echo('| <a href="index.php?id=' . $record['p_id'] . '"> ' . $record['p_title'] . '</a> ');
+}
+?>
 </div>
 
 <? if($auth) echo('<!-- '); ?>
