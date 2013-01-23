@@ -2,10 +2,10 @@
 require_once("res/Blerg.class.php");
 $blerg = new Blerg();
 $p_id = $_GET['id'];
+$page = 0;
 if(isset($_GET['page'])){
 	$page = $_GET['page'];
 }
-$page = 0;
 $p_perpage = 5;
 
 ///////
@@ -95,6 +95,7 @@ else{
 <!-- Printing the page numbers -->
 <?
 $pg = $blerg->pageCount($p_perpage);
+//echo($pg);
 if($p_id || $pg == 1) echo("<!-- "); 
 
 ?>

@@ -77,7 +77,7 @@ class Blerg{
 	function pageCount($ppp){
 		$count = 0;
 		$db = $this->db;
-		$sql = "SELECT * FROM Posts";
+		$sql = "SELECT * FROM Posts WHERE p_type='post';";
 		$db->query($sql);
 		while($db->nextRecord()){
 			$count++;
